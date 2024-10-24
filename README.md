@@ -46,7 +46,7 @@ Setup and Installation:
 
   1. dotnet build
 
-Usage
+Usage:
 The system reads JSON files and dynamically maps external models (like GoogleReservation and GoogleRoom) to internal models (like Reservation and Room).
 
 Example Usage:
