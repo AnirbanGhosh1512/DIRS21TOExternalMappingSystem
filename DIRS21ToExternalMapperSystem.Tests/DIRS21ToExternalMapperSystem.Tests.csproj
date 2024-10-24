@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventSource" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.EventLog" Version="8.0.1" />
+    <PackageReference Include="Serilog" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DIRS21ToExternalMapperSystem\DIRS21ToExternalMapperSystem.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Tests\" />
+    <None Remove="PayloadsTest\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\DIRS21ToExternalMapperSystem.Tests.csproj.nuget.g.targets" />
+    <None Include="obj\DIRS21ToExternalMapperSystem.Tests.csproj.nuget.dgspec.json" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\project.assets.json" />
+    <None Include="obj\DIRS21ToExternalMapperSystem.Tests.csproj.nuget.g.props" />
+    <None Include="obj\Debug\net7.0\DIRS21ToExternalMapperSystem.Tests.assets.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\net7.0\DIRS21ToExternalMapperSystem.Tests.GlobalUsings.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+    <Folder Include="PayloadsTest\" />
+  </ItemGroup>
+</Project>

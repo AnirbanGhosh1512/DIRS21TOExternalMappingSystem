@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1705.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIRS21ToExternalMapperSystem", "DIRS21ToExternalMapperSystem\DIRS21ToExternalMapperSystem.csproj", "{A1042C97-0F25-4336-8B86-E8761E1FABC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIRS21ToExternalMapperSystem.Tests", "DIRS21ToExternalMapperSystem.Tests\DIRS21ToExternalMapperSystem.Tests.csproj", "{A06AD40C-62E0-4535-A691-09A3FF1B82EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1042C97-0F25-4336-8B86-E8761E1FABC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1042C97-0F25-4336-8B86-E8761E1FABC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1042C97-0F25-4336-8B86-E8761E1FABC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1042C97-0F25-4336-8B86-E8761E1FABC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A06AD40C-62E0-4535-A691-09A3FF1B82EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A06AD40C-62E0-4535-A691-09A3FF1B82EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A06AD40C-62E0-4535-A691-09A3FF1B82EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A06AD40C-62E0-4535-A691-09A3FF1B82EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C39ADC43-749F-4B38-B102-D116A89C88C4}
+	EndGlobalSection
+EndGlobal

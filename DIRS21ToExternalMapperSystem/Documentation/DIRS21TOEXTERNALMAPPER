@@ -1,0 +1,115 @@
+﻿1. System Architecture Overview
+
+The system is designed to facilitate dynamic mapping between external models (such as Google's room and reservation models) and internal models used by the DIRS21 system.
+It uses .NET and C# to implement a flexible, extensible mapping system. The architecture is based on design patterns like Factory, Mapper, and SOLID principles to ensure maintainability and extensibility.
+
+Key Components of the System:
+
+1.MapperFactory:
+
+    .Responsible for dynamically resolving the appropriate mapper between different model types.
+    .Uses a dictionary to store mappers registered against specific source and target types.
+    .Provides the GetMapper method to fetch the appropriate mapper for a given source-target pair.
+
+2.Mappers:
+
+Implementations of IModelMapper interface for converting between external and internal data models.
+
+The primary mappers include:
+    . GoogleReservationToGoogleReservationDTOMapper: Converts Google’s external reservation model to an internal GoogleReservationDTO.
+    . GoogleReservationDTOToReservationMapper: Converts GoogleReservationDTO into an internal Reservation.
+    . GoogleRoomToGoogleRoomDTOMapper: Converts Google’s external room model into a GoogleRoomDTO.
+    . GoogleRoomDTOToRoomMapper: Converts GoogleRoomDTO into an internal Room.
+
+These mappers encapsulate the mapping logic between external and internal models.
+
+3. ReadFromFiles Class:
+
+    . Provides utility functions to read JSON files and deserialize them into GoogleRoom and GoogleReservation objects.
+    . Contains methods such as ReadReservationFromJson and ReadRoomFromJson.
+
+4. System Flow
+
+File Reading and Deserialization:
+
+The system reads external data from JSON files using the ReadFromFiles class, which deserializes the JSON into objects (e.g., GoogleReservation, GoogleRoom).
+
+5. Mapping:
+
+    The system uses the MapperFactory to select the appropriate mapper based on the source and target types. Mappers like GoogleReservationDTOToReservationMapper and GoogleRoomToGoogleRoomDTOMapper handle specific conversions between the external and internal models.
+
+    Factory Pattern:
+
+    . The MapperFactory ensures that the correct mapper is dynamically chosen at runtime, based on the source and target types.
+
+6. Key Classes and Methods:
+
+    1. MapperFactory:
+
+        . GetMapper(string sourceType, string targetType): Retrieves the mapper for the given source and target types.
+        . _mappers: A dictionary that holds registered mappers.
+
+    2. IModelMapper Interface:
+
+        . Defines the contract for all mappers. Any class that performs a mapping between models must implement this interface.
+
+    3. GoogleReservationToGoogleReservationDTOMapper:
+
+        . Maps a GoogleReservation to GoogleReservationDTO.
+
+    4. ReadFromFiles:
+
+        . ReadReservationFromJson: Reads a JSON file and deserializes it into a GoogleReservation.
+        . ReadRoomFromJson: Reads a JSON file and deserializes it into a GoogleRoom.
+
+
+7. Instructions for Extending the System
+
+    1. Adding a New Mapper:
+
+    . Implement the IModelMapper interface for the new source and target types.
+    . Register the new mapper in the MapperFactory.
+
+    2. Adding a New Source Type (e.g., JSON):
+
+    . To add support for a new source type, extend the ReadFromFiles class by adding a method to read and deserialize the new model type from a file.
+
+8. Potential Limitations
+
+    Error Handling:
+
+    .The system provides basic error handling using exceptions. However, more robust error handling (e.g., retry mechanisms, logging strategies) could be implemented.
+
+    Scalability:
+
+    .For smaller use cases, this architecture works well. However, as the number of models grows, the MapperFactory may become large, and you may want to consider a more modular registration process, such as using Dependency Injection.
+
+    JSON Serialization:
+
+    .The current implementation assumes that JSON files are well-formed. If more complex data structures are used, custom JSON converters may be needed.
+
+    File-Based Limitations:
+
+    .Reading from local files might not be efficient for large-scale systems or those requiring real-time mapping. In such cases, you may need to extend the system to support reading from external APIs or databases.
+
+    Thread Safety:
+
+    .The current implementation does not address thread safety. If the system needs to be accessed concurrently by multiple threads, appropriate synchronization or immutability should be considered.
+
+9. Assumptions
+
+    Source of Data:
+
+    .The system reads data from JSON files located on the file system. We assume that these files are valid and properly structured. If they aren't, the system will return null or throw a JsonException.
+
+    Mapping Requirements:
+
+    .We assume that each external model has a corresponding internal DTO or model that can be mapped one-to-one. If more complex transformations are needed, additional logic might be required in the mappers.
+
+    Registration of Mappers:
+
+    .Mappers are registered manually in the MapperFactory. We assume this will be maintained manually or could later be automated via a configuration system or dependency injection.
+
+10. Conclusion
+
+    This system provides a flexible and extensible solution for mapping between external models and internal data structures. It is structured to accommodate new models, mappers, and serialization formats with minimal code duplication and is designed with scalability and maintainability in mind. However, as the system grows, optimizations related to modularity, logging, and performance may be necessary.
